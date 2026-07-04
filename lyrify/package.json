@@ -24,9 +24,20 @@
       "output": "dist"
     },
     "mac": {
-      "target": "dmg",
-      "category": "public.app-category.music",
-      "arch": ["universal"]
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["universal"]
+        }
+      ],
+      "category": "public.app-category.music"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
   }
 }

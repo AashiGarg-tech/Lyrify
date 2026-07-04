@@ -179,6 +179,48 @@ html, body {
 }
 .settings-row button:hover { opacity: 0.85; }
 
+.link-btn {
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #fff;
+}
+.link-btn:hover { background: rgba(255,255,255,0.18); }
+
+.redirect-row { margin-bottom: 8px; }
+.redirect-row small {
+  display: block;
+  opacity: 0.65;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.code-row { display: flex; gap: 6px; }
+.code-row code {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  padding: 4px 6px;
+  font-size: 11px;
+  word-break: break-all;
+  color: #eee;
+}
+.code-row button {
+  background: var(--accent);
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #06210f;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
 #settings-panel hr {
   border: none;
   border-top: 1px solid rgba(255,255,255,0.1);

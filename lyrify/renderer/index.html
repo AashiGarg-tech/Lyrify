@@ -54,6 +54,16 @@
       <hr />
 
       <div class="settings-row">
+        <button id="openSpotifyDashboardBtn" type="button" class="link-btn">Open Spotify Developer Dashboard ↗</button>
+      </div>
+      <div class="redirect-row">
+        <small>Redirect URI — paste this exactly into your Spotify app's settings:</small>
+        <div class="code-row">
+          <code id="redirectUriText">http://127.0.0.1:8898/callback</code>
+          <button id="copyRedirectUriBtn" type="button">Copy</button>
+        </div>
+      </div>
+      <div class="settings-row">
         <label for="spotifyClientId">Spotify Client ID</label>
         <input type="text" id="spotifyClientId" placeholder="paste from developer.spotify.com" />
       </div>

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, globalShortcut, screen } = require('electron');
+const { app, BrowserWindow, ipcMain, globalShortcut, screen, shell } = require('electron');
 const path = require('path');
 const WebSocket = require('ws');
 
@@ -49,7 +49,7 @@ function createWindow() {
     frame: false,
     alwaysOnTop: true,
     resizable: true,
-    skipTaskbar: true,
+    skipTaskbar: false,
     hasShadow: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -376,6 +376,10 @@ function registerIpc() {
 
   ipcMain.handle('quit-app', () => {
     app.quit();
+  });
+
+  ipcMain.handle('open-spotify-dashboard', () => {
+    shell.openExternal('https://developer.spotify.com/dashboard');
   });
 }
 

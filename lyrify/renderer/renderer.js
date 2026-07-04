@@ -168,6 +168,22 @@ function wireSettingsForm() {
     applyCssVars(settings);
   });
 
+  document.getElementById('openSpotifyDashboardBtn').addEventListener('click', () => {
+    window.api.openSpotifyDashboard();
+  });
+
+  document.getElementById('copyRedirectUriBtn').addEventListener('click', async () => {
+    const btn = document.getElementById('copyRedirectUriBtn');
+    const text = document.getElementById('redirectUriText').textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.textContent = 'Copied!';
+    } catch {
+      btn.textContent = 'Failed';
+    }
+    setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+  });
+
   document.getElementById('spotifyConnectBtn').addEventListener('click', async () => {
     const status = document.getElementById('spotifyStatus');
     status.textContent = 'Opening browser…';
