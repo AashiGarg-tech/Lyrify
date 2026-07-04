@@ -129,6 +129,9 @@ html, body {
   top: 30px;
   right: 10px;
   width: 280px;
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
+  overflow-x: hidden;
   background: rgba(10, 10, 12, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
@@ -137,6 +140,8 @@ html, body {
   font-size: 12px;
   -webkit-app-region: no-drag;
   z-index: 10;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
 }
 
 #settings-panel.hidden { display: none; }

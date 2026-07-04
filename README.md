@@ -1,141 +1,150 @@
+<div align="center">
+
 # 🎤 Lyrify
 
-A translucent, draggable, **karaoke-style lyrics overlay** that floats above everything else on your screen and follows whatever's playing on Spotify (app or web player) or YouTube.
+**A translucent, karaoke-style lyrics overlay that floats above everything on your screen — synced live with Spotify or YouTube.**
 
-No solid background. No clicking back and forth. Just lyrics, synced, sitting quietly on top of whatever you're doing.
+No terminal to keep open once installed. No clicking back and forth. Just lyrics, always on top, always in sync.
 
-![license](https://img.shields.io/badge/license-MIT-green) ![platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-blue) ![made with](https://img.shields.io/badge/made%20with-Electron-9feaf9)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-blue)](#installation)
+[![Made with Electron](https://img.shields.io/badge/made%20with-Electron-9feaf9)](https://www.electronjs.org/)
+[![Lyrics](https://img.shields.io/badge/lyrics-lrclib.net-orange)](https://lrclib.net)
+
+</div>
 
 ---
 
-## ✨ Features
+## ✨ What it does
 
--  Translucent, frosted-glass overlay that stays on top of every app, doesn't need re-clicking
--  Works with **Spotify** (desktop app *and* web player, same mechanism) **and YouTube**
--  Karaoke-style line-fill highlighting synced to playback position
--  Pick your own text color and highlight color
--  Choose how many lines of lyrics are visible at once (1–9)
--  Click-through mode which lets you interact with whatever's behind it without moving the overlay
--  Global hotkeys to show/hide, toggle click-through, and quit
--  Free lyrics database (lrclib.net) so no scraping, no paid API
+Lyrify is a desktop overlay app that stays on top of every other window and shows synced, karaoke-style lyrics for whatever you're currently playing — whether that's the **Spotify desktop app**, the **Spotify web player**, or a **YouTube** video.
 
-## ⚡ Quick start
+The current line sweeps with a color fill as it's sung. The previous and next lines are visible but dimmed. All of this floats in a frosted-glass panel over your screen without interrupting anything you're doing underneath it.
 
+---
+
+## 🖥 Installation
+
+### Windows
+Download `Lyrify Setup.exe` from [Releases](../../releases) and run it. The installer lets you choose where to install it, and adds a shortcut to your Start Menu and Desktop.
+
+### macOS
+Download `Lyrify.dmg` from [Releases](../../releases), open it and drag Lyrify into Applications.
+
+### Run from source
 ```bash
 git clone https://github.com/Eshitanagaria/Lyrify.git
 cd Lyrify/lyrify
 npm install
 npm start
 ```
+Requires [Node.js LTS](https://nodejs.org).
 
-Then click the ⚙ on the overlay and connect Spotify (one-time setup, ~2 minutes — see below).
+---
 
-## 🛠 Setup
+## 🎵 Spotify setup (one-time, ~2 minutes)
 
-### 1. Install Node.js
-Get the LTS version from [nodejs.org](https://nodejs.org) if you don't have it.
+Lyrify uses Spotify's official API with PKCE authentication — meaning it never sees your Spotify password, and there's no shared backend. Each user connects their own account directly.
 
-### 2. Install dependencies
-```bash
-cd lyrify
-npm install
-```
-
-### 3. Set up Spotify (one-time, ~2 minutes)
-
-1. Go to [developer.spotify.com/dashboard](https://developer.spotify.com/dashboard) and log in.
-2. Click **Create app**. Name/description can be anything.
-3. In **Redirect URIs**, add exactly:
+1. Click **Open Spotify Developer Dashboard ↗** inside the app's settings panel
+2. Log in → **Create app** (name it anything)
+3. Under **Redirect URIs**, paste exactly:
    ```
    http://127.0.0.1:8898/callback
    ```
-   It must be that literal IP — Spotify no longer accepts `localhost`.
-4. Save, then copy the **Client ID** from the app's overview page (you don't need the secret — this uses the PKCE flow).
+   The app has a **Copy** button for this so you don't have to type it.
+4. Save → copy the **Client ID** (the long alphanumeric string on the app's overview page)
+5. Back in Lyrify → paste the Client ID → **Connect Spotify** → approve in the browser
 
-> ⚠️ **As of February 2026, Spotify requires the account that creates the Developer app to have an active Premium subscription** — Development Mode apps stop working if that lapses. This is a Spotify-side policy change, not something this project controls. The YouTube side of this app is unaffected either way.
+Done. Works identically whether you play from the Spotify desktop app or the web player.
 
-### 4. Run it
-```bash
-npm start
-```
-Click ⚙ → paste your Client ID → **Connect Spotify** → approve in the browser that opens.
+> ⚠️ As of February 2026, Spotify requires the account that creates the Developer app to have an active **Premium** subscription. This is a Spotify policy, not a Lyrify requirement.
 
-### 5. YouTube bridge (only needed for YouTube)
-1. `chrome://extensions` → enable **Developer mode**
-2. **Load unpacked** → select the `youtube-lyrics-bridge` folder
-3. That's it — no popup, it just quietly feeds the overlay whenever you're on a YouTube video
+---
 
-## 🎛 Settings panel
+## 📺 YouTube setup
 
-| Setting | What it does |
+1. Open Chrome → go to `chrome://extensions`
+2. Enable **Developer mode** (top right toggle)
+3. Click **Load unpacked** → select the `youtube-lyrics-bridge` folder from this repo
+4. That's it — no popup, no configuration. Open any music video and Lyrify will pick it up automatically.
+
+---
+
+## 🎛 Features
+
+| Feature | Details |
 |---|---|
-| Lines shown | How many lyric lines are visible at once (1–9) |
-| Background opacity / blur | Frosted-glass translucency |
-| Text color / Highlight color | Pick any colors you want |
-| Font size | Self-explanatory |
-| Show track name | Toggles the small title in the drag bar |
+| **Karaoke line fill** | Active line sweeps left-to-right in sync with playback |
+| **Multi-line view** | See 1–9 lines at once; current line is always centered |
+| **Frosted-glass overlay** | Translucent background with adjustable opacity and blur |
+| **Custom colors** | Pick your own text color and highlight/karaoke color |
+| **Font size control** | Adjustable from the settings panel |
+| **Always on top** | Stays above every other window, follows across virtual desktops |
+| **Click-through mode** | Interact with apps underneath without moving the overlay |
+| **Track name display** | Optional — shows artist and song title in the drag bar |
+| **Scrollable settings** | Full settings panel accessible without resizing the window |
+| **One-click Spotify setup** | Dashboard shortcut + copyable redirect URI built into the settings panel |
+| **Smart rate-limit handling** | Respects Spotify's `Retry-After` header; persists backoff across restarts |
+| **Single instance lock** | Launching a second copy focuses the existing window instead of starting a new one |
+| **Cross-platform installer** | Windows `.exe` (NSIS) and macOS `.dmg` (universal binary) |
+
+---
 
 ## ⌨️ Hotkeys
 
 | Shortcut | Action |
 |---|---|
-| `Ctrl+Alt+L` | Show/hide the overlay |
-| `Ctrl+Alt+K` | Toggle click-through |
+| `Ctrl+Alt+L` | Show / hide the overlay |
+| `Ctrl+Alt+K` | Toggle click-through mode |
 | `Ctrl+Alt+Q` | Quit |
 
-The window is draggable from its top strip and resizable from its edges. There's also a ✕ button on the overlay itself to quit.
+The overlay is also draggable from its top strip and resizable from its edges. There's a ✕ button to quit directly from the overlay.
 
-## ⬇️ Download (no setup)
+---
 
-Don't want to install Node or build anything? Grab the prebuilt app:
+## 🧠 How it works
 
-**[Download Lyrify for macOS →](https://github.com/TheNandinee/Lyrify/releases/latest)**
+- **Spotify sync** — polls Spotify's `/me/player/currently-playing` endpoint every 2 seconds. This is account-level, not app-level, so it works whether you're playing from the desktop app or the browser.
+- **YouTube sync** — a small Chrome MV3 extension reads the `<video>` element's `currentTime` and `duration` directly, plus the page title, and forwards it to the Electron app over a local WebSocket on `127.0.0.1:8765`.
+- **Lyrics** — fetched from [lrclib.net](https://lrclib.net), a free, open, no-key-required database with line-level LRC timestamps for a large catalog.
+- **Position interpolation** — between API polls, the playback position is estimated from elapsed wall-clock time, keeping the highlight smooth with no visible lag despite infrequent polling.
+- **Karaoke fill** — since lrclib provides per-line timestamps (not per-word), the fill effect is a CSS `clip-path` sweep timed against the gap between the current line's timestamp and the next one. It reads as karaoke without needing paid word-level data.
+- **Auth** — Spotify uses the PKCE OAuth 2.0 flow: no client secret, no backend, tokens stored locally in Electron's userData folder.
 
-> **Apple Silicon (M1/M2/M3) only.** Intel Macs need to build from source (see below).
-
-After downloading:
-
-1. Open the `.dmg` and drag **Lyrify** into your Applications folder.
-2. The app is not code-signed, so macOS will block it the first time. Open **Terminal** and run this once: `xattr -cr /Applications/Lyrify.app`
-3. Launch Lyrify from Spotlight or Applications. Click the ⚙ to connect Spotify (one-time, ~2 min — see Setup below).
-
-Building from source is still fully supported and is the only option on Intel Macs or if you want to modify the code — see **Quick start** below.
+---
 
 ## ❓ FAQ
 
-**Will this break if a lot of people use it / am I going to run into Spotify's rate limits?**
-No — and this is worth understanding if you're contributing or just curious. There's no shared backend and no shared Spotify app. Every person who runs this creates **their own** Spotify Developer app and Client ID, and authenticates with **their own** Spotify account. Spotify's rate limits and quotas are scoped per Client ID, so your usage and someone else's are completely isolated — one person playing music all day doesn't put anyone else closer to a limit. The 30-second-rolling-window rate limit only matters for *your own* polling behavior, and the app already backs off and respects `Retry-After` if it's ever hit.
-
-**Why did I get a 429 error?**
-Almost always from rapid dev-testing (restarting the app over and over in a short window). Normal day-to-day use (open laptop, play music, occasionally restart the app) won't come close to the limit.
+**Will multiple users hit the same rate limit?**
+No. Every user creates their own Spotify Developer app with their own Client ID. Spotify's rate limits are scoped per Client ID — your usage is entirely isolated from anyone else's.
 
 **Do I need Spotify Premium?**
-To create the Developer app, yes (Spotify's February 2026 policy, not this project's choice). To just use the YouTube side, no.
+To create the Developer app, yes (Spotify's 2026 policy). To use the YouTube side of Lyrify, no premium is required at all.
 
-**Why not just bundle one shared Spotify app for everyone?**
-Spotify explicitly disallows this for Development Mode apps (one Client ID is meant for one developer's personal use, capped at 5 authorized users) — distributing a single Client ID to many people violates their terms and gets it revoked quickly. Everyone creating their own app is the only way this scales safely and stays within the rules.
+**Can I run this without building from source?**
+Yes — download the installer from [Releases](../../releases).
 
-## 🧠 How it actually works
+**Why does YouTube title matching sometimes get the wrong song?**
+The YouTube bridge parses titles heuristically (looking for "Artist - Title" patterns). It works well on official music uploads; less reliably on remixes, covers, or oddly titled videos.
 
-- **Spotify**: polls the official `/me/player/currently-playing` endpoint every 2 seconds. This is tied to your *account*, not a specific app, so it works identically whether you're playing from the desktop app or the website.
-- **YouTube**: a small content script reads the page's `<video>` element directly (current time, duration, paused state) and the video title, forwarding it over a local WebSocket to the overlay app. Title parsing is heuristic ("Artist - Title") — most reliable on official music uploads.
-- **Lyrics**: fetched from [lrclib.net](https://lrclib.net), a free, open lyrics database with line-level timestamps.
-- **Sync**: between API polls, playback position is extrapolated from elapsed wall-clock time, so the highlight stays smooth even with infrequent polling.
-- **Karaoke fill**: since timestamps are per-line (not per-word), the "karaoke" effect is a left-to-right color sweep across the current line, timed against how far you are between this line's timestamp and the next one.
-
-## 🐞 Known limitations
-
-- YouTube title parsing can mismatch on videos that don't follow an "Artist - Title" naming pattern
-- True OS-level exclusive fullscreen (rare for browsers) can cover the overlay
-- Tested primarily on Windows; macOS/Linux translucency may render slightly differently
+---
 
 ## 🤝 Contributing
 
-Issues and PRs welcome — this started as a personal weekend project, so there's plenty of room to make the title-parsing smarter, add more music sources, or polish the UI further.
+Issues and PRs are welcome. A few directions worth exploring:
 
-## ⭐ If you found this useful
+- Smarter YouTube title parsing (MusicBrainz lookup, etc.)
+- Linux packaging
+- Word-level karaoke (would need a different lyrics source — Musixmatch has this but requires a paid key)
+- Auto-start on login
 
-Consider starring the repo — it genuinely helps other people find it, and helps me know if it's worth continuing to build on.
+## 👥 Contributors
+
+- [Eshita](https://github.com/Eshitanagaria) — project author
+- [Nandinee](https://github.com/Nandinee) — macOS packaging
+
+---
 
 ## License
 
