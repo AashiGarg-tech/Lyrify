@@ -142,7 +142,7 @@ Issues and PRs are welcome. A few directions worth exploring:
 ##  Contributors
 
 - [Eshita](https://github.com/Eshitanagaria) — project author
-- [Nandinee](https://github.com/Nandinee) — macOS packaging
+- [Nandinee](https://github.com/TheNandinee) — macOS packaging
 
 ---
 
