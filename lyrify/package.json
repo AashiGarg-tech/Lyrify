@@ -2,7 +2,8 @@
   "name": "lyrify",
   "version": "1.0.0",
   "description": "Translucent karaoke-style lyrics overlay for Spotify and YouTube",
-  "author": "Nandinee",
+  "author": "Eshita",
+  "Contributor": "Nandinee",
   "license": "MIT",
   "main": "main.js",
   "scripts": {
@@ -18,7 +19,7 @@
     "electron-builder": "^26.15.3"
   },
   "build": {
-    "appId": "com.nandinee.lyrify",
+    "appId": "com.eshita.lyrify",
     "productName": "Lyrify",
     "directories": {
       "output": "dist"
