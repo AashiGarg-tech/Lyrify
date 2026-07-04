@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Translucent karaoke-style lyrics overlay for Spotify and YouTube",
   "author": "Eshita",
-  "Contributor": "Nandinee",
+  "contributor": "Nandinee",
   "license": "MIT",
   "main": "main.js",
   "scripts": {
@@ -19,26 +19,26 @@
     "electron-builder": "^26.15.3"
   },
   "build": {
-    "appId": "com.eshita.lyrify",
-    "productName": "Lyrify",
-    "directories": {
-      "output": "dist"
-    },
-    "mac": {
-      "target": [
-        {
-          "target": "dmg",
-          "arch": ["universal"]
-        }
-      ],
-      "category": "public.app-category.music"
-    },
-    "win": {
-      "target": "nsis"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+  "appId": "com.eshita.lyrify",
+  "productName": "Lyrify",
+  "directories": {
+    "output": "dist"
+  },
+  "mac": {
+  "target": [
+    {
+      "target": "dmg",
+      "arch": ["universal"]
     }
-  }
+  ],
+  "category": "public.app-category.music"
+},
+"win": {
+  "target": "nsis"
+},
+"nsis": {
+  "oneClick": false,
+  "allowToChangeInstallationDirectory": true
+}
+}
 }
